@@ -30,7 +30,7 @@
         global $db;
         $query = "INSERT INTO crud_storge(name,ocupation,company,email) VALUES('$a', '$b', '$c', '$d')";
         $result = mysqli_query($this->conn, $query);
-
+        header('location: view.php');
         if($result){
             return true;
         }
@@ -60,18 +60,18 @@
     public function update(){
         global $db;
         if(isset($_POST['btn_update'])){
-            $id = $db-check($_POST['id']);
+            $id = $_POST['id'];
             $name = $db->check($_POST['name']);
             $company = $db->check($_POST['company']);
             $ocupation = $db->check($_POST['occupation']);
             $email = $db->check($_POST['email']);
 
             if($this->update_record($id,$name,$ocupation,$company,$email)){
-                $this->set_messsage('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
+                $this->set_message('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
                 header("location: view.php");
             }
             else{
-                $this->set_messsage('<div class="alert alert-success"> Something Wrong : )</div>');
+                $this->set_message('<div class="alert alert-success"> Something Wrong : )</div>');
             }
 
             $sql = "UPDATE crud_storge set id='$id', name='$name', ocupation='$ocupation', email='$email' WHERE id=$id";
