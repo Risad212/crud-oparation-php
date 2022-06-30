@@ -26,6 +26,7 @@
                     <div class="card-body">
                     <?php
                           $db->display_message(); 
+                          $db->display_message();
                         ?>
                         <table class='table table-bordered'>
                             <tr>

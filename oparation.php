@@ -68,7 +68,7 @@
 
             if($this->update_record($id,$name,$ocupation,$company,$email)){
                 $this->set_messsage('<div class="alert alert-success"> Your Record Has Been Updated : )</div>');
-                header("location:view.php");
+                header("location: view.php");
             }
             else{
                 $this->set_messsage('<div class="alert alert-success"> Something Wrong : )</div>');
@@ -124,6 +124,7 @@
          if($result)
             {
                 return true;
+                return $result;
             }
             else
             {
