@@ -1,4 +1,5 @@
 <?php
+//   session_start();
   require_once('config.php');
   $db = new Database();
 
@@ -86,7 +87,7 @@
     public function update_record($id,$name,$ocupation,$company,$email){
         global $db;
         $sql = "UPDATE crud_storge set id='$id', name='$name', ocupation='$ocupation', email='$email' WHERE id=$id";
-        $result = mysqli_query($db->connection,$sql);
+        $result = mysqli_query($db->conn,$sql);
         if($result)
             {
                 return true;
@@ -98,7 +99,7 @@
     }
 
     // session message
-    public function se_message($msg){
+    public function set_message($msg){
         if(!empty($msg)){
             $_SESSION['Message'] = $msg;
         }
@@ -113,6 +114,21 @@
             echo $_SESSION['Message'];
             unset($_SESSION['Message']);
         }
+    }
+
+    // delate record
+    public function delate_record($id){
+         global $db;
+         $query = "DELETE FROM crud_storge WHERE id=$id";
+         $result = mysqli_query($db->conn,$query);
+         if($result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
     }
  }
 
